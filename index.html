@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Life Coach｜生活教练</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="hero">
+    <div class="hero__content">
+      <p class="eyebrow">Life Coach ｜ 生活教练</p>
+      <h1>日常工具版本 · 主动干预的私人教练</h1>
+      <p class="lede">能够感知状态、主动提醒、提供思维工具与量化总结，帮助你在状态不佳或自控力低时仍能被温和而坚定地引导。</p>
+      <div class="hero__actions">
+        <a class="btn primary" href="#intervention">立即生成引导</a>
+        <a class="btn ghost" href="#tools">查看思维工具库</a>
+      </div>
+    </div>
+    <div class="hero__panel">
+      <p class="panel__title">快速状态自检</p>
+      <div class="badge-row">
+        <span class="badge">主动</span>
+        <span class="badge">被动</span>
+        <span class="badge">Coach 主动</span>
+      </div>
+      <ul class="panel__list">
+        <li>视觉｜听觉｜生理｜地理位置｜消费记录</li>
+        <li>日程提醒｜闹钟｜设备使用时长</li>
+        <li>主动记录｜反馈｜吐槽</li>
+      </ul>
+      <p class="panel__note">“嗨，你是不是忘记了什么？没关系，现在你可以这样做…”</p>
+    </div>
+  </header>
+
+  <main>
+    <section id="status" class="section">
+      <div class="section__header">
+        <div>
+          <p class="eyebrow">感知用户状态</p>
+          <h2>主动 & 被动感知，以及 Coach 侧线索</h2>
+          <p>勾选实际能采集到的信号，快速梳理当下的状态视角。</p>
+        </div>
+        <div class="pill">信号清单</div>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <div class="card__title">用户主动</div>
+          <div class="chips" role="group" aria-label="用户主动信号">
+            <label><input type="checkbox" checked> 反馈与吐槽</label>
+            <label><input type="checkbox"> 目标/计划记录</label>
+            <label><input type="checkbox"> 情绪日记</label>
+            <label><input type="checkbox"> 干扰记录</label>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__title">用户被动</div>
+          <div class="chips" role="group" aria-label="用户被动信号">
+            <label><input type="checkbox" checked> 未打卡</label>
+            <label><input type="checkbox"> 未完成关键任务</label>
+            <label><input type="checkbox"> 久坐提醒</label>
+            <label><input type="checkbox"> 睡眠/运动缺失</label>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__title">Coach 主动</div>
+          <div class="chips" role="group" aria-label="Coach主动信号">
+            <label><input type="checkbox" checked> 设备使用时长</label>
+            <label><input type="checkbox"> 日历事件</label>
+            <label><input type="checkbox"> 闹钟/快捷指令</label>
+            <label><input type="checkbox"> 位置信号</label>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="intervention" class="section">
+      <div class="section__header">
+        <div>
+          <p class="eyebrow">高质量引导</p>
+          <h2>当状态不佳时，给出可执行的提示与 life hack</h2>
+          <p>选择你当前的状态与阻碍，点击生成即时提示。</p>
+        </div>
+        <div class="pill pill--accent">即时干预</div>
+      </div>
+      <div class="card form-card">
+        <form id="interventionForm" class="form">
+          <label class="field">
+            <span>当前状态</span>
+            <div class="radio-row">
+              <label><input type="radio" name="state" value="主动" checked> 主动</label>
+              <label><input type="radio" name="state" value="被动"> 被动</label>
+              <label><input type="radio" name="state" value="Coach"> Coach 主动</label>
+            </div>
+          </label>
+          <label class="field">
+            <span>情绪/体感</span>
+            <select name="mood">
+              <option value="低落">低落或疲惫</option>
+              <option value="焦虑">焦虑或混乱</option>
+              <option value="分心">分心、无法启动</option>
+              <option value="平静">平静但需要节奏</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>当前阻碍</span>
+            <select name="blocker">
+              <option value="缺少优先级">缺少优先级</option>
+              <option value="缺少动力">缺少动力</option>
+              <option value="缺少结构">缺少结构</option>
+              <option value="被干扰">被干扰</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>想要的反馈风格</span>
+            <div class="radio-row">
+              <label><input type="radio" name="tone" value="温和" checked> 温和鼓励</label>
+              <label><input type="radio" name="tone" value="坚定"> 坚定提醒</label>
+              <label><input type="radio" name="tone" value="紧急"> 紧急拉一把</label>
+            </div>
+          </label>
+          <button type="submit" class="btn primary">生成引导</button>
+        </form>
+        <div id="interventionOutput" class="output" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section id="tools" class="section">
+      <div class="section__header">
+        <div>
+          <p class="eyebrow">思维方式工具</p>
+          <h2>自用提炼 + 他人整理的思维框架</h2>
+          <p>关键时刻快速调用：如何行动、如何拆分、如何对齐目标。</p>
+        </div>
+        <div class="pill">工具库</div>
+      </div>
+      <div class="grid tool-grid">
+        <article class="card tool-card">
+          <h3>自用：如何做 XXX</h3>
+          <p>列出最笨的可行路径，先完成后优化；遇阻时做“更弱版本”。</p>
+          <ul>
+            <li>写下 3 步最笨的解法</li>
+            <li>拆成 25 分钟可完成的小块</li>
+            <li>先跑通，再迭代</li>
+          </ul>
+        </article>
+        <article class="card tool-card">
+          <h3>CBT 快速自助</h3>
+          <p>识别自动化念头，写下证据支持/反驳，再生成平衡想法。</p>
+          <ul>
+            <li>当前想法是什么？（写一句）</li>
+            <li>支持它的证据 vs. 反驳它的证据</li>
+            <li>新的平衡想法 → 立刻行动 1 步</li>
+          </ul>
+        </article>
+        <article class="card tool-card">
+          <h3>纳瓦尔清单</h3>
+          <p>长期积累：阅读/写作/编程/销售；建设杠杆，避免被动反应。</p>
+          <ul>
+            <li>今天的阅读或写作 30 分钟</li>
+            <li>输出一个可复用的脚本/模板</li>
+            <li>记录一个可复利的决定</li>
+          </ul>
+        </article>
+        <article class="card tool-card">
+          <h3>时间管理：GTD + WBS</h3>
+          <p>收集 → 处理 → 组织 → 回顾 → 执行；遇到模糊任务先做 WBS 拆解。</p>
+          <ul>
+            <li>列收件箱，2 分钟可做的立即做</li>
+            <li>明确下一步行动 & 所需上下文</li>
+            <li>每日/每周回顾重排优先级</li>
+          </ul>
+        </article>
+        <article class="card tool-card">
+          <h3>第一性原理</h3>
+          <p>写出问题的本质变量，逐一验证假设，避免引用权威或旧路径。</p>
+          <ul>
+            <li>目标是什么？成功状态如何衡量？</li>
+            <li>列 3 个最关键的变量/限制</li>
+            <li>为每个变量设计一个可验证的小实验</li>
+          </ul>
+        </article>
+        <article class="card tool-card">
+          <h3>经验教训循环</h3>
+          <p>Lesson Log：记录踩坑 → 规则化 → 反复提醒，直到形成肌肉记忆。</p>
+          <ul>
+            <li>今天的 Lesson 是什么？</li>
+            <li>写出“下一次怎么做”一句话</li>
+            <li>贴到每日清单/快捷指令中</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="summary" class="section">
+      <div class="section__header">
+        <div>
+          <p class="eyebrow">系统化、量化、可视化</p>
+          <h2>日/周/月评判系统，关注北极星指标</h2>
+          <p>记录生活维度：能量、专注、情绪、产出；自动生成下个周期的行动提示。</p>
+        </div>
+        <div class="pill pill--accent">反思</div>
+      </div>
+      <div class="grid">
+        <div class="card score-card">
+          <div class="score-row">
+            <div><span class="label">今日能量</span><strong>7/10</strong></div>
+            <div><span class="label">专注</span><strong>6/10</strong></div>
+            <div><span class="label">情绪</span><strong>8/10</strong></div>
+            <div><span class="label">产出</span><strong>5/10</strong></div>
+          </div>
+          <p class="muted">北极星：写作字数｜运动时长｜高质量专注块数</p>
+        </div>
+        <div class="card form-card">
+          <form id="reflectionForm" class="form">
+            <label class="field">
+              <span>今天过得怎么样？</span>
+              <select name="dayQuality">
+                <option value="一般">一般般，需要微调</option>
+                <option value="优秀">不错，继续保持</option>
+                <option value="低迷">状态低迷</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>关键亮点</span>
+              <input type="text" name="highlight" placeholder="例如：完成晨间写作 500 字" required>
+            </label>
+            <label class="field">
+              <span>主要阻碍</span>
+              <input type="text" name="block" placeholder="例如：刷手机太久" required>
+            </label>
+            <label class="field">
+              <span>下一步实验</span>
+              <input type="text" name="experiment" placeholder="例如：睡前放手机客厅" required>
+            </label>
+            <button type="submit" class="btn primary">生成明日提示</button>
+          </form>
+          <div id="reflectionOutput" class="output" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="extension" class="section">
+      <div class="section__header">
+        <div>
+          <p class="eyebrow">容易拓展</p>
+          <h2>与闹钟、表格、快捷指令联动，低成本叠加</h2>
+          <p>本质是可组合的 Prompt Agent，前端可有可无，模型强更佳。</p>
+        </div>
+        <div class="pill">扩展</div>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <div class="card__title">干预机制</div>
+          <ul class="bullets">
+            <li>用户主动：幕布/文档表格记录 + AI 聊天辅助。</li>
+            <li>用户被动：闹钟 + 快捷指令自动弹窗；日历穿插微任务。</li>
+            <li>外部信息：手机使用时长、久坐提醒、运动记录、纸质表格同步。</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card__title">常用工具组合</div>
+          <ul class="bullets">
+            <li>纸笔：每日计划 + 干扰记录 + Lesson 复盘。</li>
+            <li>数字：Notion/表格做北极星指标统计。</li>
+            <li>桌面：小组件/壁纸放今日提醒；命令行/快捷指令快速触发提示。</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card__title">总结机制</div>
+          <ul class="bullets">
+            <li>晚上 5 分钟手写总结，系统汇总表格与打卡。</li>
+            <li>周末回顾两周趋势，调整闹钟与提示模板。</li>
+            <li>月度评审：北极星指标 + 习惯遵守率 + 新增 Lesson。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Life Coach ｜ 日常工具版本 · 主动干预 & 思维工具 & 量化总结</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
